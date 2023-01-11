@@ -41,14 +41,14 @@ def google_autocomplete(keyword: str) -> list[str]:
 
 # The Streamlit app
 st.set_page_config(
-    page_title="Oh My App!",
-    page_icon="😎",
+    page_title="AIQueen SEO App!",
+    page_icon="",
     layout="wide"
 )
 
 
 # The Streamlit app main section
-st.title("This is a next level SEO app")
+st.title("AIQueen SEO app")
 st.write("Make your ideas real.")
 
 input_google_autocomplete_keyword: str = st.text_input(
