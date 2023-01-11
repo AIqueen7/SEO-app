@@ -46,39 +46,19 @@ st.set_page_config(
     layout="wide"
 )
 
-# The Streamlit app authentication section
-with open("./config.yaml") as file:
-    config = yaml.load(file, Loader=yaml.SafeLoader)
 
-authenticator = stauth.Authenticate(
-    config["credentials"],
-    config["cookie"]["name"],
-    config["cookie"]["key"],
-    config["cookie"]["expiry_days"],
-    config["preauthorized"]
-)
+# The Streamlit app main section
+st.title("This is a next level SEO app")
+st.write("Make your ideas real.")
 
-name, authentication_status, username = authenticator.login("Login", "main")
+input_google_autocomplete_keyword: str = st.text_input(
+    "What is your seed keyword?")
 
-if authentication_status:
-    authenticator.logout('Logout', 'main')
+if input_google_autocomplete_keyword:
+    output_list_google_autocomplete: list[str] = google_autocomplete(
+        input_google_autocomplete_keyword)
 
-    # The Streamlit app main section
-    st.title("This is a next level SEO app")
-    st.write("Make your ideas real.")
+    if output_list_google_autocomplete:
+        st.download_button("Download the output",
+                           "\n".join(output_list_google_autocomplete))
 
-    input_google_autocomplete_keyword: str = st.text_input(
-        "What is your seed keyword?")
-
-    if input_google_autocomplete_keyword:
-        output_list_google_autocomplete: list[str] = google_autocomplete(
-            input_google_autocomplete_keyword)
-
-        if output_list_google_autocomplete:
-            st.download_button("Download the output",
-                               "\n".join(output_list_google_autocomplete))
-
-elif not authentication_status:
-    st.error('Username/password is incorrect')
-elif authentication_status is None:
-    st.warning('Please enter your username and password')
