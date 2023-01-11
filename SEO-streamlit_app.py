@@ -57,7 +57,7 @@ input_google_autocomplete_keyword: str = st.text_input(
 
 image = Image.open('sunrise.jpg')
 
-st.image(image, caption='Sunrise by the mountains')
+
 if input_google_autocomplete_keyword:
     output_list_google_autocomplete: list[str] = google_autocomplete(
         input_google_autocomplete_keyword)
