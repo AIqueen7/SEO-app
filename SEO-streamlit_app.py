@@ -50,7 +50,7 @@ st.set_page_config(
 
 # The Streamlit app main section
 st.title("AIQueen SEO App")
-st.write("Make your ideas real.")
+
 
 input_google_autocomplete_keyword: str = st.text_input(
     "What is your seed keyword?")
