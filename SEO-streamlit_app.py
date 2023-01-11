@@ -56,7 +56,7 @@ input_google_autocomplete_keyword: str = st.text_input(
     "What is your seed keyword?")
 
 image = Image.open('sunrise.jpg')
-
+st.image(image)
 
 if input_google_autocomplete_keyword:
     output_list_google_autocomplete: list[str] = google_autocomplete(
