@@ -6,6 +6,7 @@ import requests
 import streamlit as st
 import streamlit_authenticator as stauth
 import yaml
+from PIL import Image
 
 
 def google_autocomplete(keyword: str) -> list[str]:
@@ -54,6 +55,9 @@ st.write("Make your ideas real.")
 input_google_autocomplete_keyword: str = st.text_input(
     "What is your seed keyword?")
 
+image = Image.open('sunrise.jpg')
+
+st.image(image, caption='Sunrise by the mountains')
 if input_google_autocomplete_keyword:
     output_list_google_autocomplete: list[str] = google_autocomplete(
         input_google_autocomplete_keyword)
